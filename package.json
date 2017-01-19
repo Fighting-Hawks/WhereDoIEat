@@ -40,5 +40,15 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "WhereDoIEat: An Ionic project"
+  "description": "WhereDoIEat: An Ionic project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fighting-Hawks/WhereDoIEat.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fighting-Hawks/WhereDoIEat/issues"
+  }
 }
