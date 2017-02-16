@@ -8,7 +8,7 @@ import {Geolocation} from 'ionic-native';
 
 @Component({
   selector: 'page-page1',
-  templateUrl: 'page1.html'
+  templateUrl: 'HomePage.html'
 })
 export class HomePage {
 
