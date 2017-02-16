@@ -16,15 +16,13 @@ export class Page1 {
 
   }
 
+  //Returns device's current location
   getLocation(){
 
-    console.log("Im in getLocation :)");
-
     let loading = this.loadingCtrl.create({
-      content:'Hold on...'
+      content:'Please wait...'
     });
     loading.present();
-
     let currentLocation = Geolocation.getCurrentPosition(()=>{
     }).then((location) => {
       loading.dismiss();
@@ -32,15 +30,17 @@ export class Page1 {
       let latitude = location.coords.latitude;
       alert("Latitude is: " + latitude + " , Longitude is: " + longitude);
     }).catch((error) => {
-      console.log('Error getting location',error);
+      error = 'Error getting location';
+      throw error;
     });
   }
 
 
 
-  /*
+    //Retrieve a list of restaurants based on the device location using YELP API
+
     getRestaurants(){
 
   }
-  */
+
 }
