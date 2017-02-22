@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { HomePage } from '../HomePage';
 /*
   Generated class for the MapPage page.
 
@@ -13,10 +13,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MapPagePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    var longitude = navParams.get('longitude');
+    var latitude = navParams.get('latitude');
+    alert("Latitude is: " + latitude + " , Longitude is: " + longitude);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPagePage');
+  }
+
+  //Show Google Maps of restaurant (for now, show current location)
+  showMapOfRestaurants(){
+
   }
 
 }

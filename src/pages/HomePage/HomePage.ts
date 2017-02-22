@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 
-import { NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import { MapPagePage } from '../map-page/map-page';
 
 
 
 @Component({
-  selector: 'page-page1',
+  selector: 'page-HomePage',
   templateUrl: 'HomePage.html'
 })
 export class HomePage {
@@ -24,17 +25,22 @@ export class HomePage {
     });
     loading.present();
     let currentLocation = Geolocation.getCurrentPosition(()=>{
+      setTimeout(3000);
     }).then((location) => {
       loading.dismiss();
       let longitude = location.coords.longitude;
       let latitude = location.coords.latitude;
-      alert("Latitude is: " + latitude + " , Longitude is: " + longitude);
+      this.navCtrl.push(MapPagePage,{
+        longitude : longitude,
+        latitude : latitude
+      });
     }).catch((error) => {
       error = 'Error getting location';
       throw error;
 
     });
   }
+
 
 
 
