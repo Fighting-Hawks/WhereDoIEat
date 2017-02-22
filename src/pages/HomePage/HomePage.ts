@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController} from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import {Geolocation} from 'ionic-native';
+import { Geolocation } from 'ionic-native';
 
 
 
@@ -32,6 +32,7 @@ export class HomePage {
     }).catch((error) => {
       error = 'Error getting location';
       throw error;
+
     });
   }
 
@@ -39,8 +40,14 @@ export class HomePage {
 
     //Retrieve a list of restaurants based on the device location using YELP API
 
-    getRestaurants(){
+  getRestaurants(long,lat){
 
   }
+
+
+  //THIRD PARTY APIs : Google Directions, Google
+
+
+
 
 }
