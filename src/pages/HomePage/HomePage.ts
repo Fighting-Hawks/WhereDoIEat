@@ -4,8 +4,6 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import { MapPagePage } from '../map-page/map-page';
 
-
-
 @Component({
   selector: 'page-HomePage',
   templateUrl: 'HomePage.html'
@@ -16,7 +14,10 @@ export class HomePage {
   latitude : 0;
 
   constructor(public navCtrl: NavController) {
-    let currentLocation = Geolocation.getCurrentPosition(()=>{
+  }
+
+  ionViewDidLoad(){
+    Geolocation.getCurrentPosition(()=>{
     }).then((location) => {
       this.setLongitude(location.coords.longitude);
       this.setLatitude(location.coords.latitude);
@@ -25,7 +26,6 @@ export class HomePage {
       error = 'Error getting location';
       throw error;
     });
-
   }
 
   //Setter for Latitude
@@ -40,7 +40,6 @@ export class HomePage {
 
   //Retrieve a list of restaurants based on the device location using YELP API
   getRestaurants(long,lat){
-
   }
 
   pushCoordinates(){
@@ -49,13 +48,4 @@ export class HomePage {
     latitude : this.latitude
   });
 }
-
-
-
-  //THIRD PARTY APIs : Google Directions, Google
-
-
-
-
-
 }
