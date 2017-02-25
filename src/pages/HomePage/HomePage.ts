@@ -16,7 +16,28 @@ export class HomePage {
   longitude : 0;
   latitude : 0;
 
-  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {}
+  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {
+
+    //var isSuccessful = false;
+    let loading = this.loadingCtrl.create({
+      content:'Please wait...'
+    });
+
+    loading.present();
+    let currentLocation = Geolocation.getCurrentPosition(()=>{
+    }).then((location) => {
+      //isSuccessful = true;
+      loading.dismiss();
+      this.setLongitude(location.coords.longitude);
+      this.setLatitude(location.coords.latitude);
+      console.log("latitude: " + this.latitude +" longitude: "+ this.longitude);
+      //this.pushCoordinates();
+    }).catch((error) => {
+      error = 'Error getting location';
+      throw error;
+    });
+
+  }
 
   //Setter for Latitude
   setLatitude(latitude){
@@ -28,29 +49,12 @@ export class HomePage {
      this.longitude = longitude;
   }
 
-  //Returns device's current location
+  /*Returns device's current location
   getLocation(){
 
-    var isSuccessful = false;
-    let loading = this.loadingCtrl.create({
-      content:'Please wait...'
-    });
 
-    loading.present();
-    let currentLocation = Geolocation.getCurrentPosition(()=>{
-    }).then((location) => {
-      isSuccessful = true;
-      loading.dismiss();
-      this.setLongitude(location.coords.longitude);
-      this.setLatitude(location.coords.latitude);
-      console.log("latitude: " + this.latitude +" longitude: "+ this.longitude);
-      this.pushCoordinates();
-    }).catch((error) => {
-      error = 'Error getting location';
-      throw error;
-    });
   }
-
+  */
 
 
 
