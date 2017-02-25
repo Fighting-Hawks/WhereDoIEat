@@ -66,7 +66,7 @@ export class HomePage {
 
 
   pushCoordinates(){
-    this.navCtrl.push(MapPagePage,{
+    this.navCtrl.setRoot(MapPagePage,{
     longitude : this.longitude,
     latitude : this.latitude
   });

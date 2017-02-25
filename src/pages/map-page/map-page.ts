@@ -19,8 +19,11 @@ export class MapPagePage {
     console.log("Latitude is: " + latitude + " , Longitude is: " + longitude);
   }
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPagePage');
+    //Display google map
+    // showMapOfRestaurants();
   }
 
   //Show Google Maps of restaurant (for now, show current location)
