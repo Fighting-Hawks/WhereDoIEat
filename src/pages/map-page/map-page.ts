@@ -16,7 +16,7 @@ export class MapPagePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     var longitude = navParams.get('longitude');
     var latitude = navParams.get('latitude');
-    alert("Latitude is: " + latitude + " , Longitude is: " + longitude);
+    console.log("Latitude is: " + latitude + " , Longitude is: " + longitude);
   }
 
   ionViewDidLoad() {

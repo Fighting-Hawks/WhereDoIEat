@@ -13,31 +13,41 @@ import { MapPagePage } from '../map-page/map-page';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {
+  longitude : 0;
+  latitude : 0;
 
+  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {}
+
+  //Setter for Latitude
+  setLatitude(latitude){
+     this.latitude = latitude;
+  }
+
+  //Setter for Longitude
+  setLongitude(longitude){
+     this.longitude = longitude;
   }
 
   //Returns device's current location
   getLocation(){
 
+    var isSuccessful = false;
     let loading = this.loadingCtrl.create({
       content:'Please wait...'
     });
+
     loading.present();
     let currentLocation = Geolocation.getCurrentPosition(()=>{
-      setTimeout(3000);
     }).then((location) => {
+      isSuccessful = true;
       loading.dismiss();
-      let longitude = location.coords.longitude;
-      let latitude = location.coords.latitude;
-      this.navCtrl.push(MapPagePage,{
-        longitude : longitude,
-        latitude : latitude
-      });
+      this.setLongitude(location.coords.longitude);
+      this.setLatitude(location.coords.latitude);
+      console.log("latitude: " + this.latitude +" longitude: "+ this.longitude);
+      this.pushCoordinates();
     }).catch((error) => {
       error = 'Error getting location';
       throw error;
-
     });
   }
 
@@ -51,7 +61,17 @@ export class HomePage {
   }
 
 
+  pushCoordinates(){
+    this.navCtrl.push(MapPagePage,{
+    longitude : this.longitude,
+    latitude : this.latitude
+  });
+}
+
+
+
   //THIRD PARTY APIs : Google Directions, Google
+
 
 
 
